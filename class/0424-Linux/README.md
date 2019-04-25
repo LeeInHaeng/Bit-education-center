@@ -57,7 +57,7 @@ HISTTIMEFORMAT="%Y-%m-%d_%H:%M:%S [CMD]:"
 - 삭제를 하고 싶으면 groupdel
 - 속한 그룹을 보고 싶으면 groups 사용자명
 
-### 부팅시 자동으로 서버 시작
+### 부팅시 자동으로 tomcat 서버 시작
 - /etc/init.d/tomcat 서버 시작 중지 스크립트 작성
 - chmod 755 /etc/init.d/tomcat
 ```
@@ -69,3 +69,8 @@ ps -ef | grep tomcat
 ```
 - chkconfig --list 로 자동 실행 데몬 확인 (런레벨 2, 3, 4)
 - chkconfig --add tomcat 추가
+- /etc/profile 에 tomcat 환경변수 설정
+```
+### tomcat catalina home
+export CATALINA_HOME=/usr/local/cafe24/tomcat
+```
