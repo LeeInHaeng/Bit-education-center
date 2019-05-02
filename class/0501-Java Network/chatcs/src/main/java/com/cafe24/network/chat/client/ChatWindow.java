@@ -1,4 +1,4 @@
-package com.cafe24.network.chat.server;
+package com.cafe24.network.chat.client;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -13,16 +13,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
-import java.net.ServerSocket;
+import java.io.UnsupportedEncodingException;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-
-import com.cafe24.network.chat.domain.User;
+import java.net.SocketException;
+import java.util.Base64;
+import java.util.Base64.Encoder;
 
 public class ChatWindow {
 
@@ -32,24 +32,44 @@ public class ChatWindow {
 	private TextField textField;
 	private TextArea textArea;
 	
-	private String nickName;
-	public static final int PORT = 7000;
-	public static final String IP = "192.168.1.22";
+	private Socket socket;
+	private BufferedReader br;
+	private PrintWriter pw;
 
-	public ChatWindow(String name) {
+	public ChatWindow(String name, Socket socket) {
 		frame = new Frame(name);
 		pannel = new Panel();
 		buttonSend = new Button("Send");
 		textField = new TextField();
 		textArea = new TextArea(30, 80);
 		
-		this.nickName = name;
+		this.socket = socket;
+		try {
+			this.br = new BufferedReader(
+					new InputStreamReader(
+							socket.getInputStream(), "utf-8"));
+			
+			this.pw = new PrintWriter(
+					new OutputStreamWriter(
+							socket.getOutputStream(), "utf-8"), true);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void finish() {
+		
+		pw.println("quit:");
+		
 		// socket 정리
+		if (socket != null && !socket.isClosed()) {
+			try {
+				socket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		System.exit(0);
-
 	}
 
 	public void show() {
@@ -97,6 +117,7 @@ public class ChatWindow {
 		frame.setVisible(true);
 		frame.pack();
 		
+		new ChatClientReceiveThread().start();
 	}
 
 	private void updateTextArea(String message) {
@@ -105,52 +126,41 @@ public class ChatWindow {
 
 	private void sendMessage() {
 		String message = textField.getText();
-		// pw.println("MSG "+ message);
-
+		
+		// Base64 인코딩
+		Encoder encoder = Base64.getEncoder();
+		byte[] base64Message;
+		try {
+			base64Message = encoder.encode(message.getBytes("utf-8"));
+			System.out.println(new String(base64Message));
+			pw.println("message:"+ new String(base64Message));
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		
 		textField.setText("");
 		textField.requestFocus();
 
 		// test
-		updateTextArea(message);
+		updateTextArea(message+"\r\n");
 	}
 
-	public class MainThread {
+	public class ChatClientReceiveThread extends Thread{
 
-		private ArrayList<User> listUser = new ArrayList<User>();
-
-		public void main(String[] args) {
-			ServerSocket serverSocket = null;
-			
+		@Override
+		public void run() {
 			try {
-				// 서버 소켓 생성
-				serverSocket = new ServerSocket();
-				
-				// 바인딩
-				serverSocket.bind(new InetSocketAddress("0.0.0.0", PORT));
-				System.out.println("[서버] 연결 기다림  :" + PORT);
-				
-				// 요청 대기
 				while(true) {
-					Socket socket = serverSocket.accept();
-					
-					PrintWriter pw = new PrintWriter(
-							new OutputStreamWriter(socket.getOutputStream(), StandardCharsets.UTF_8), true);
-					
-					listUser.add(new User(socket, pw, nickName));
-					new ChatServerThread(listUser).start();
+					String request;
+					request = br.readLine();
+					updateTextArea(request+"\r\n");
 				}
+			} catch(SocketException e) {
+				System.out.println("[server] sudden closed by client");
 			} catch (IOException e) {
 				e.printStackTrace();
-			} finally {
-				try {
-					serverSocket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
 			}
-			
 		}
-
+		
 	}
-
 }
