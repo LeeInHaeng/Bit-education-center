@@ -74,3 +74,9 @@
 - restore dump 명령어
 - MariaDB 계정 생성, 외부에서 리눅스 MariaDB 연결
 - sql 쿼리 연습
+
+# 0507-MariaDB
+### MariaDB 쿼리 연습
+- 조인
+### 데이터베이스 설계
+- 정규화
