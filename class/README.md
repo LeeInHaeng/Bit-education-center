@@ -80,3 +80,13 @@
 - 조인
 ### 데이터베이스 설계
 - 정규화
+
+# 0508-MariaDB
+### MariaDB 쿼리 연습
+- 서브쿼리
+- 다중행
+- DDL, DML 연습
+### JDBC
+- Java에서 JDBC로 MariaDB 연동
+- DAO
+- DAO statement 객체 개선
