@@ -90,3 +90,6 @@
 - Java에서 JDBC로 MariaDB 연동
 - DAO
 - DAO statement 객체 개선
+
+# 0509-jdbc
+- bookmall 예제와 bookmall 실습 과제 수행
