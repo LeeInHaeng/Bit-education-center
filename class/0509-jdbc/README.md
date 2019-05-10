@@ -7,6 +7,5 @@
 - 즉, 주문과 책 사이에 다대다 관계가 성립
 ![123](https://user-images.githubusercontent.com/20277647/57506624-52240a80-7337-11e9-9078-b96948cf324c.PNG)
 - 이러한 다대다 관계를 풀기 위해 중간 테이블을 만든다. (주문도서)
-![123](https://user-images.githubusercontent.com/20277647/57512665-3cb6dc80-7347-11e9-8ac6-17d6eeffcfd9.PNG)
-- 2차원 배열로 생각해보면 주문이 바깥쪽, 도서가 안쪽 배열을 채우는 방식
+![123](https://user-images.githubusercontent.com/20277647/57514398-640fa880-734b-11e9-94b2-d65a903e910c.PNG)
 - 주문 도서는 사용자들이 주문한 도서들의 history 역할을 하는 것이라고 볼 수 있을 것 같다.
