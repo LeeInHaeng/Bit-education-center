@@ -45,7 +45,7 @@ public class MainApp {
 		BookDAO bookDAO = new BookDAO();
 		
 		for(int i=0; i<10; i++) {
-			bookDAO.insert(new BookVO("책 제목"+i, i+10000+i*50, (i%6)+1));
+			bookDAO.insert(new BookVO("책 제목"+i, i+10000+i*500, (i%6)+1));
 		}
 		
 		System.out.println("-------책을 출력합니다.---------");
@@ -84,6 +84,11 @@ public class MainApp {
 		ordersDAO.insert(new OrdersVO(30000,"제주도",1));
 		ordersDAO.insert(new OrdersVO(45000,"부산",2));
 		
+		// 1번 사용자가 이후에 한번 더 주문 (이번 배송지는 서울)
+		ordersDAO.insert(new OrdersVO(35000,"서울",1));
+		// 2번 사용자가 이후에 한번 더 주문 (이번 배송지는 경기도)
+		ordersDAO.insert(new OrdersVO(15000,"경기도",2));
+		
 		System.out.println("------주문 정보를 출력 합니다.------");
 		List<OrdersVO> ordersList = ordersDAO.getList();
 		for(OrdersVO vo : ordersList) {
@@ -92,14 +97,40 @@ public class MainApp {
 		
 		// 주문 도서 추가
 		System.out.println("-----주문 도서를 추가 합니다.-----");
-		ordersDAO.obInsert(new OrdersBookVO(1,2,5));
-		ordersDAO.obInsert(new OrdersBookVO(2,4,6));
+		// 1번 주문이 각각 2,3,4,5의 책을 1권씩 주문
+		ordersDAO.obInsert(new OrdersBookVO(1,2,1));
+		ordersDAO.obInsert(new OrdersBookVO(1,3,1));
+		ordersDAO.obInsert(new OrdersBookVO(1,4,1));
+		ordersDAO.obInsert(new OrdersBookVO(1,5,1));
 		
-		System.out.println("-----주문 도서 정보를 출력 합니다.------");
+		// 2번 주문이 각각 4,5,6의 책을 2권씩 주문
+		ordersDAO.obInsert(new OrdersBookVO(2,4,2));
+		ordersDAO.obInsert(new OrdersBookVO(2,5,2));
+		ordersDAO.obInsert(new OrdersBookVO(2,6,2));
+		
+		// 3번 주문(즉, 1번 사용자가 한번 더 주문)이 각각 1,2,5의 책을 3권씩 주문
+		ordersDAO.obInsert(new OrdersBookVO(3,1,3));
+		ordersDAO.obInsert(new OrdersBookVO(3,2,3));
+		ordersDAO.obInsert(new OrdersBookVO(3,5,3));
+		
+		// 4번 주문(즉, 2번 사용자가 한번 더 주문)이 각각 1,2,3의 책을 1권씩 주문
+		ordersDAO.obInsert(new OrdersBookVO(2,1,1));
+		ordersDAO.obInsert(new OrdersBookVO(2,2,1));
+		ordersDAO.obInsert(new OrdersBookVO(2,3,1));
+		
+		System.out.println("-----전체 주문 도서 정보를 출력 합니다.------");
 		List<OrdersBookVO> ordersBookList = ordersDAO.obGetList();
 		for(OrdersBookVO vo : ordersBookList) {
 			System.out.println(vo);
 		}
+		
+		System.out.println("----특정 사용자의 주문 도서 정보만 출력 합니다. (1번 사용자)");
+		List<OrdersBookVO> ordersBookList2 = ordersDAO.obGetList(1L);
+		for(OrdersBookVO vo : ordersBookList2) {
+			System.out.println(vo);
+		}
+		
+		System.out.println("-----프로그램 정상 마침--------");
 	}
 
 }

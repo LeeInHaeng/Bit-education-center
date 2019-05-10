@@ -201,6 +201,67 @@ public class OrdersDAO extends DAOManager {
 		return result;
 	}
 	
+	// ordersbook read
+	public List<OrdersBookVO> obGetList(Long memberNo){
+		List<OrdersBookVO> result = new ArrayList<OrdersBookVO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = getConnection();
+			
+			String sql = "select a.order_no, d.name, a.book_no, b.title, a.cnt " + 
+					" from orders_book a" + 
+					" join book b on a.book_no=b.no" + 
+					" join orders c on a.order_no=c.no " + 
+					" join member d on c.member_no=d.no " + 
+					" where d.no=? " + 
+					" order by a.order_no";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setLong(1, memberNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				Long ordersNo = rs.getLong(1);
+				String name = rs.getString(2);
+				Long bookNo = rs.getLong(3);
+				String title = rs.getString(4);
+				Long cnt = rs.getLong(5);
+				
+				OrdersBookVO vo = new OrdersBookVO();
+				vo.setMemberName(name);
+				vo.setOrdersNo(ordersNo);
+				vo.setBookNo(bookNo);
+				vo.setBookTitle(title);
+				vo.setCnt(cnt);
+				
+				result.add(vo);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		}
+		
+		return result;
+	}
+	
 	// update
 	public boolean update(OrdersVO vo) {
 		boolean result = false;

@@ -92,4 +92,11 @@
 - DAO statement 객체 개선
 
 # 0509-jdbc
+### 다대다 관계 이해
+- 도서 관리 프로그램에서 주문과 책 사이의 관계
 - bookmall 예제와 bookmall 실습 과제 수행
+
+# 0510-Java Programming(Basic)
+### Java 기본
+- Object Test1
+- Object Test2

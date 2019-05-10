@@ -10,14 +10,21 @@ public class CategoryDAOTest {
 
 	public static void main(String[] args) {
 		
+		System.out.println("-------카테고리를 추가합니다.-------");
 		insertTest(new CategoryVO("카테고리1"));
+		insertTest(new CategoryVO("카테고리2"));
+		insertTest(new CategoryVO("카테고리3"));
+		insertTest(new CategoryVO("카테고리4"));
+		insertTest(new CategoryVO("카테고리5"));
 		getListTest();
 		System.out.println("-----------------");
 		
+		System.out.println("-------카테고리를 변경합니다.-------");
 		updateTest(new CategoryVO(1,"카테고리 업데이트"));
 		getListTest();
 		System.out.println("-----------------");
 		
+		System.out.println("-------카테고리를 삭제합니다.-------");
 		deleteTest(1L);
 		getListTest();
 	}

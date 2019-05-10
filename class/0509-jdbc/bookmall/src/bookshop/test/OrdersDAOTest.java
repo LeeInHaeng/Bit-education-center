@@ -9,20 +9,29 @@ import bookshop.vo.OrdersVO;
 public class OrdersDAOTest {
 
 	public static void main(String[] args) {
-		insertTest(new OrdersVO(30000,"제주도",1));
-		insertTest(new OrdersVO(45000,"부산",2));
+		System.out.println("-------주문을 추가합니다.-------");
+		insertTest(new OrdersVO(30000,"제주도1",2));
+		insertTest(new OrdersVO(31000,"제주도2",2));
+		insertTest(new OrdersVO(45000,"부산1",3));
+		insertTest(new OrdersVO(46000,"부산2",3));
 		getListTest();
 		System.out.println("------------");
 		
-		updateTest(new OrdersVO(2,"1234-1",33333,"화성",1));
+		System.out.println("-------주문을 변경합니다.-------");
+		updateTest(new OrdersVO(2,"1234-1",33333,"화성",2));
 		getListTest();
 		System.out.println("------------");
 		
+		System.out.println("-------주문을 삭제합니다.-------");
 		deleteTest(1L);
 		getListTest();
+		System.out.println("------------");
 		
-		obInsertTest(new OrdersBookVO(2,4,10));
-		obInsertTest(new OrdersBookVO(2,3,4));
+		System.out.println("-------주문을 도서를 추가합니다.-------");
+		obInsertTest(new OrdersBookVO(2,4,1));
+		obInsertTest(new OrdersBookVO(2,6,2));
+		obInsertTest(new OrdersBookVO(3,1,3));
+		obInsertTest(new OrdersBookVO(3,2,3));
 		obGetListTest();
 	}
 

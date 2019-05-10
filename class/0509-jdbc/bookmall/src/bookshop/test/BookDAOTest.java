@@ -9,16 +9,24 @@ public class BookDAOTest {
 
 	public static void main(String[] args) {
 
-		for(int i=0; i<20; i++) {
-			insertTest(new BookVO("제목"+i, i+10000+i*50, (i%6)+1));
-		}
+		System.out.println("-------책을 추가합니다.-------");
+		insertTest(new BookVO("책 제목222", 11000, 2));
+		insertTest(new BookVO("책 제목333", 12000, 3));
+		insertTest(new BookVO("책 제목444", 13000, 4));
+		insertTest(new BookVO("책 제목555", 14000, 5));
+		insertTest(new BookVO("책 제목2222", 15000, 2));
+		insertTest(new BookVO("책 제목3333", 16000, 3));
+		insertTest(new BookVO("책 제목4444", 17000, 4));
+		insertTest(new BookVO("책 제목5555", 18000, 5));
 		getListTest();
 		System.out.println("-------------");
 		
-		updateTest(new BookVO(4,"수정된 제목",12341234,1));
+		System.out.println("-------책을 변경합니다.-------");
+		updateTest(new BookVO(4,"수정된 제목",12341234,2));
 		getListTest();
 		System.out.println("-------------");
 		
+		System.out.println("-------책을 삭제합니다.-------");
 		deleteTest(5L);
 		getListTest();
 	}

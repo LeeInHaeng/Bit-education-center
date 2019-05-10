@@ -2,11 +2,20 @@ package bookshop.vo;
 
 public class OrdersBookVO {
 
+	private String memberName;
 	private long ordersNo;
 	private long bookNo;
 	private long cnt;
 	
 	private String bookTitle;
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
 
 	public long getOrdersNo() {
 		return ordersNo;
@@ -40,13 +49,13 @@ public class OrdersBookVO {
 		this.bookTitle = bookTitle;
 	}
 
+	
 	@Override
 	public String toString() {
-		return "OrdersBookVO [ordersNo=" + ordersNo + ", bookNo=" + bookNo + ", cnt=" + cnt + ", bookTitle=" + bookTitle
-				+ "]";
+		return "OrdersBookVO [memberName=" + memberName + ", ordersNo=" + ordersNo + ", bookNo=" + bookNo + ", cnt="
+				+ cnt + ", bookTitle=" + bookTitle + "]";
 	}
 
-	
 	public OrdersBookVO() {
 		super();
 	}
