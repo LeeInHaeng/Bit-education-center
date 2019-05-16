@@ -123,3 +123,14 @@
 ### Spring 사용
 - Spring 초기 설정
 - Spring 동작과정
+
+# 0516-Spring
+### Spring Controller 기본 사용
+### Spring Controller 어노테이션 사용
+- RequestMapping 어노테이션 사용
+- RequestParam 어노테이션 사용
+### Root Application Context (비즈니스 로직)
+- 최종 xml 설정 파일들 기본 형태
+### 어플리케이션 아키텍처 예제
+- 비즈니스 분석 (사용자 스토리 도출)
+- 서비즈 정의
