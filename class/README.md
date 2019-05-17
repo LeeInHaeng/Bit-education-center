@@ -134,3 +134,12 @@
 ### 어플리케이션 아키텍처 예제
 - 비즈니스 분석 (사용자 스토리 도출)
 - 서비즈 정의
+
+# 0517-Exception&MyBatis
+### Spring Error 예외처리
+- web.xml에 http 상태 코드에 따른 view 위치 맵핑
+- 글로벌 핸들러(어드바이징 컨트롤러)를 이용한 예외 처리
+### Spring MyBatis 사용
+- DataSource를 이용해 DB 연동
+- Spring에서 Mybatis 연동 및 DAO에서 사용
+- MyBatis mapper xml 파일 설정 예제
