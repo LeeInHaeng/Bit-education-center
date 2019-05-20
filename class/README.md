@@ -143,3 +143,8 @@
 - DataSource를 이용해 DB 연동
 - Spring에서 Mybatis 연동 및 DAO에서 사용
 - MyBatis mapper xml 파일 설정 예제
+
+# 0520-Spring
+### 메시지 컨버터
+- 메시지 컨버터 등록하기
+- Ajax 사용하기
