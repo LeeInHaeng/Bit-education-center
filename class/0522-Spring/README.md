@@ -241,3 +241,10 @@ Email.userVo.email=\uC774\uBA54\uC77C \uD615\uC2DD\uC774 \uC544\uB2D9\uB2C8\uB2E
 		return "user/join";
 	}
 ```
+
+### 오류가 발생한 사항들
+- form:form 태그 안에 input 값은 모두 채워질 수 있어야 한다.
+  - Controller에서 POST 방식 뿐만 아니라 GET 방식 에서도 ModelAttribute 어노테이션을 이용해 빈 객체를 넘겨 주어야 한다.
+  - 해당 어노테이션을 사용할 수 없다면 model.addAttribute 를 이용한다.
+  - 객체 뿐만 아니라 input 태그를 모두 채워야 되기 때문에 GET 방식에서 model.addAttribute로 적절한 값을 넘긴다.
+- POST에서 문제 발생시 forward를 해야하기 때문에 POST와 GET 방식의 URL은 같아야 한다.
