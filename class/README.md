@@ -170,3 +170,13 @@
 ### 어노테이션 만들기
 ### 인터셉터 + 어노테이션 활용
 ### 커스텀 어노테이션 사용시 어노테이션에 값 셋팅
+
+# 0524-Spring
+### Spring Container
+- BeanFactory (XMLBeanFactory)
+- ApplicationContext (주로 사용)
+### CI (Continuous Integration)
+- Jenkins 기반의 CI 환경
+- Jenkins 설치 및 셋팅
+- 에러 해결
+- 성공 pom.xml

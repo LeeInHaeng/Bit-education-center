@@ -210,11 +210,10 @@ export PATH=$PATH:$JAVA_HOME/bin:/usr/local/cafe24/maven/bin
             </configuration>
          </plugin>
 ```
-
-### 에러 해결 후
-- git을 이용해 repository에 프로젝트를 올리고
-- Jenkins에서 Build Now 누른 후 빌드 완료되면
-- 리눅스IP:8080/mysite2 에 접속해보기
+- 에러 해결 후
+  - git을 이용해 repository에 프로젝트를 올리고
+  - Jenkins에서 Build Now 누른 후 빌드 완료되면
+  - 리눅스IP:8080/mysite2 에 접속해보기
 
 ### 성공 pom.xml
 ```xml
