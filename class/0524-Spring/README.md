@@ -476,3 +476,31 @@ export PATH=$PATH:$JAVA_HOME/bin:/usr/local/cafe24/maven/bin
    </build>
 </project>
 ```
+
+### pom.xml에 톰캣 manager의 username과 password 가 나오는 것을 방지
+- plugin을 살펴보면 maven 빌드시 tomcat-maven-plugin을 사용하며, 톰캣 매니저의 아이디와 비밀번호를 미리 셋팅해 놓는다.
+- 이 문제를 해결하기 위해 maven이 설치되어 있는 디렉터리로 이동 후 설정 파일에 server를 설정해준다.
+- cd /usr/local/cafe24/maven/conf
+- vi settings.xml
+  - servers 태그에 server 태그를 추가 후 톰캣 매니저의 아이디와 비밀번호를 셋팅
+```
+<servers>
+    <server>
+        <id>TomcatServer</id>
+        <username>admin</username>
+         <password>manager</password>
+    </server>
+</servers>
+```
+- pom.xml의 tomcat-maven-plugin에서 위에서 설정한 id(TomcatServer)로 셋팅
+```xml
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>tomcat-maven-plugin</artifactId>
+            <configuration>
+               <url>http://127.0.0.1:8080/manager/text</url>
+               <path>/mysite2</path>
+                <server>TomcatServer</server>
+            </configuration>
+         </plugin>
+```
