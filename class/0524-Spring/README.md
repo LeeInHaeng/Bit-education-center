@@ -150,6 +150,13 @@ export M2_HOME=/usr/local/cafe24/maven
 export PATH=$PATH:$M2_HOME/bin
 export PATH=$PATH:$JAVA_HOME/bin:/usr/local/cafe24/maven/bin
 ```
+- 인코딩 관련 문제 pom.xml에 추가
+```xml
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+```
 - eclipse의 m2에 있는 클래스들을 잡지 못함
 - pom.xml에 내용 추가
   - eclipse에서 pom.xml에 dependencies와 build 사이에 profiles 추가
