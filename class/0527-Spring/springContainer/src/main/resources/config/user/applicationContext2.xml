@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	
+	<bean id="usr" name="user" class="com.cafe24.springContainer.user.User" />
+	
+	<bean class="com.cafe24.springContainer.user.User" />
+	
+	<bean id="usr2" class="com.cafe24.springContainer.user.User">
+		<constructor-arg value="둘리" />
+	</bean>
+	
+	<bean id="usr3" class="com.cafe24.springContainer.user.User">
+		<constructor-arg index="1" value="마이클" />
+		<constructor-arg index="0" value="1" />
+	</bean>
+	
+	<bean id="usr4" class="com.cafe24.springContainer.user.User">
+		<property name="name" value="도우넛"/>
+		<property name="no" value="2"/>
+	</bean>
+	
+	<bean id="friend" class="com.cafe24.springContainer.user.Friend">
+		<property name="name" value="또치"/>
+	</bean>
+	
+	<bean id="usr5" class="com.cafe24.springContainer.user.User">
+		<property name="name" value="도우넛"/>
+		<property name="no" value="2"/>
+		<property name="friend" ref="friend"/>
+	</bean>
+	
+	<bean id="usr6" class="com.cafe24.springContainer.user.User">
+		<constructor-arg index="1" value="마이클" />
+		<constructor-arg index="0" value="1" />
+		<property name="friend">
+			<bean class="com.cafe24.springContainer.user.Friend">
+				<property name="name" value="길동이"/>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="usr7" class="com.cafe24.springContainer.user.User">
+		<constructor-arg value="둘리" />
+		<property name="friends">
+			<list>
+				<value>마이콜</value>
+				<value>도우넛</value>
+				<value>또치</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>

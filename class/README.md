@@ -181,3 +181,6 @@
 - 에러 해결
 - 성공 pom.xml
 - pom.xml에 톰캣 manager의 username과 password 가 나오는 것을 방지
+
+# 0527-Spring
+### XML 파일을 이용한 빈 주입 17가지
