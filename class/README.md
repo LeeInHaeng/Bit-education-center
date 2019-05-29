@@ -184,3 +184,15 @@
 
 # 0527-Spring
 ### XML 파일을 이용한 빈 주입 17가지
+
+# 0529-Spring
+### 멀티 프로젝트
+### xml 파일이 아닌 class 파일로 설정파일 분리
+- 데이터베이스 설정파일
+- 마이바티스 설정파일
+- aspectj-autoproxy 설정
+- component-scan 설정
+- 클래스 파일로 설정파일을 만들 시 web.xml에 설정 클래스 파일 경로 설정
+- annotation-config(오토 스캐닝)의 component-scan 설정
+- ViewResolver 설정
+- CSS 적용
