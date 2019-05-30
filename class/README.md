@@ -187,12 +187,18 @@
 
 # 0529-Spring
 ### 멀티 프로젝트
-### xml 파일이 아닌 class 파일로 설정파일 분리
-- 데이터베이스 설정파일
-- 마이바티스 설정파일
+### xml 파일이 아닌 class 파일로 설정파일 분리 - applicationContext.xml
+- 클래스 파일로 설정파일을 만들 시 web.xml에 설정 클래스 파일 경로 설정
+- DataSource(데이터베이스) 설정
+- MyBatis 설정
 - aspectj-autoproxy 설정
 - component-scan 설정
-- 클래스 파일로 설정파일을 만들 시 web.xml에 설정 클래스 파일 경로 설정
 - annotation-config(오토 스캐닝)의 component-scan 설정
+### xml 파일이 아닌 class 파일로 설정파일 분리 - spring-servlet.xml
 - ViewResolver 설정
-- CSS 적용
+- default-servlet-handler 설정
+- Message-Converters 설정
+- MultipartResolver 설정
+- MessageSource 설정
+- ArgumentResolver 설정
+- interceptors 설정
