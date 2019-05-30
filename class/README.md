@@ -202,3 +202,12 @@
 - MessageSource 설정
 - ArgumentResolver 설정
 - interceptors 설정
+
+# 0530-SpringBoot
+### web.xml 설정파일을 클래스 파일로 대체
+### SpringBoot
+- 데이터베이스(DataSource), MyBatis 설정
+- ViewResolver 설정
+- MultipartResolver 설정
+- MessageSource 설정
+- Message-Converters 와 ArgumentResolver, interceptors 설정
