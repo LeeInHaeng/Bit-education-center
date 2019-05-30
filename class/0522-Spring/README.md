@@ -248,3 +248,4 @@ Email.userVo.email=\uC774\uBA54\uC77C \uD615\uC2DD\uC774 \uC544\uB2D9\uB2C8\uB2E
   - 해당 어노테이션을 사용할 수 없다면 model.addAttribute 를 이용한다.
   - 객체 뿐만 아니라 input 태그를 모두 채워야 되기 때문에 GET 방식에서 model.addAttribute로 적절한 값을 넘긴다.
 - POST에서 문제 발생시 forward를 해야하기 때문에 POST와 GET 방식의 URL은 같아야 한다.
+- Bad Request : BindingResult 객체 전에는 무조건 Valid 어노테이션이 붙은 객체를 선언해야 한다!!
