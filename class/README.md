@@ -211,3 +211,11 @@
 - MultipartResolver 설정
 - MessageSource 설정
 - Message-Converters 와 ArgumentResolver, interceptors 설정
+
+# 0531-Apache&Tomcat
+### jenkins 톰캣, 프로젝트용 톰캣 분리
+- tomcat-jenkins 설정
+- tomcat-cafe24 설정
+- tomcat 서비스 등록
+### 아파치 톰캣 연동
+- mod-jk로 아파치 톰캣 연동 및 설정으로 로드밸런싱 부하 분산
