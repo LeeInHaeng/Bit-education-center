@@ -2,8 +2,14 @@
 - pom.xml에 내용 추가
 ```xml
 	<build>
-		<finalName>${artifactId}</finalName>
+	
+		<finalName>${project.artifactId}</finalName>
 		<plugins>
+		
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
@@ -17,12 +23,13 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
 					<url>http://127.0.0.1:8080/manager/text</url>
-					<path>/springbootMysite</path>
+					<path>/jblog5</path>
 					<server>TomcatServer</server>
 				</configuration>
 			</plugin>
 
 		</plugins>
+		
 	</build>
 ```
 
