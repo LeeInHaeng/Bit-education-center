@@ -222,3 +222,8 @@
 
 # 0603-Jenkins
 ### Springboot jenkins 배포
+
+# 0604-Linux
+### 가상 파일 시스템 (VFS)
+- 주요 특수 파일 시스템
+- 리눅스 하드 디스크 설정
