@@ -507,3 +507,13 @@ export PATH=$PATH:$JAVA_HOME/bin:/usr/local/cafe24/maven/bin
             </configuration>
          </plugin>
 ```
+
+### github의 private Repository를 Jenkins로 빌드
+- 리눅스 서버에서 ssh-keygen 명령어로 ssh 키 생성
+  - /root/.ssh에 id_rsa 파일과 id_rsa.pub 파일이 생성 된다.
+- github의 Settings 에서 Deploy keys 탭으로 이동
+- Add deploy key를 누른 후 id_rsa.pub 의 내용을 붙여넣기
+- Jenkins 에서는 왼쪽 탭에 Credentials 탭으로 이동
+- Add Credentials 후 Kind를 SSH Username with private key로 선택
+- Private Key 라디오 버튼을 누르고 Enter directly 에서 id_rsa 파일의 내용을 붙여넣기
+- 양쪽의 키가 허가가 되면 github의 clone 부분이 https:// 이 아닌 git@github.com:아이디/레파지토리.git 으로 변경된다.
