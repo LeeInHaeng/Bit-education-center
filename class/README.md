@@ -227,3 +227,10 @@
 ### 가상 파일 시스템 (VFS)
 - 주요 특수 파일 시스템
 - 리눅스 하드 디스크 설정
+
+# 0610-PostgreSQL
+### PostgreSQL
+- PostgreSQL Linux 설치
+- 기본 쿼리 사용
+- 계정, 권한 관리
+- JDBC 연결
