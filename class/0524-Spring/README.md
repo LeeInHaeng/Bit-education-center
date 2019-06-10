@@ -133,8 +133,11 @@ System.out.println(user);
 - Create First Admin User 화면이 나오면 정상 설치 완료
   - 적절하게 계정 생성 후 로그인
 - Jenkins 관리 ---> Global Tool Configuration ---> Add JDK로 JDK 경로 지정
+  - /usr/local/cafe24/jdk
 - Git에서 경로를 잡아준다. (git 에 'x'권한 있는 실행 경로)
+  - /usr/local/cafe24/git/bin/git
 - Add Maven으로 메이븐 경로를 잡아준다.
+  - /usr/local/cafe24/maven
 - 프로젝트 생성 ---> 소스코드 관리 ---> Git ---> Repositories에서 .git 경로 지정
 - Build ---> Invoke top-level Maven targets - Goals에 해당 명령어 입력
   - clean package tomcat:redeploy -Pproduction -Dmaven.test.skip=true
