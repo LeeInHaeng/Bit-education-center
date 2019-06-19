@@ -235,3 +235,12 @@
 - 기본 쿼리 사용
 - 계정, 권한 관리
 - JDBC 연결
+
+# 0619-Django
+### BeautifulSoup과 Selenium 크롤링
+- https://github.com/LeeInHaeng/python_crawling
+### Python에서 Postgres 사용
+### Django 프로젝트 시작 (pycharm community 버전 에서)
+- 프로젝트 셋팅 전에 DB 및 계정 생성
+- Django 프로젝트 시작
+- Application 작업
