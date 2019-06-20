@@ -157,3 +157,11 @@ def hello(request):
     return render(request, 'helloworld/hello.html')
 ```
 - templates 디렉토리에서 helloworld 디렉토리 생성 후 hello.html 파일 생성
+- static 경로 지정 (settings.py)
+  - DIRS 부분은 실제 디렉토리가 있는 경로 (튜플 타입이고 마지막에 ,가 들어간다.)
+  - URL은 href로 static 디렉토리에 접근하기 위한 경로
+  - ex) <link href="/assets/css/main.css" rel="stylesheet" type="text/css">
+```py
+STATICFILES_DIRS=(os.path.join(BASE_DIR,'statics'),)
+STATIC_URL = '/assets/'
+```

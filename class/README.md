@@ -244,3 +244,14 @@
 - 프로젝트 셋팅 전에 DB 및 계정 생성
 - Django 프로젝트 시작
 - Application 작업
+
+# 0620-Django
+### Django 사용
+- Model 정의
+- Migrations 이름의 DDL python 모듈을 생성
+- views에서 파라미터 뽑기
+- views와 기본적인 통신
+- html 기본 틀에 변경되는 내용만 각각 html에 맞게 변경하기 (include 같은 기능)
+- 간단한 ORM 예제
+- Ajax 통신
+- Session에 데이터 저장
