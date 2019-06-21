@@ -255,3 +255,6 @@
 - 간단한 ORM 예제
 - Ajax 통신
 - Session에 데이터 저장
+
+# 0621-Django
+### Django 템플릿 언어

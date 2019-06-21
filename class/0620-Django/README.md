@@ -17,6 +17,13 @@ class Emaillist(models.Model):
 ```py
 joindate = models.DateTimeField(auto_now=True)
 ```
+- Join을 위한 외래키 설정
+  - 한 명의 사용자가 여러 개의 board
+```py
+class Board(models.Model):
+    ...
+    user = models.ForeignKey(User, to_field='id', on_delete=models.CASCADE)
+```
 
 ### Migrations 이름의 DDL python 모듈을 생성
 - 어플리케이션의 models.py 에 정의된 모델을 데이터베이스에 자동으로 생성 (ORM)
@@ -86,6 +93,10 @@ def index(request):
 ```html
 {{ guestbook.contents | linebreaksbr }}
 ```
+- html에서 GET 데이터 얻기
+```html
+{% if request.GET.result == 'fail' %}
+```
 
 ### html 기본 틀에 변경되는 내용만 각각 html에 맞게 변경하기 (include 같은 기능)
 - 기본 틀인 base.html 을 만들고, 변경되는 부분만 block 처리해준다.
@@ -148,6 +159,13 @@ def index(request):
         check_email = User.objects.get(email=email)
     except User.DoesNotExist:
 ```
+- 기본 select (한 개)
+```py
+    results = User.objects.filter(email=email) \
+                .filter(password=password)
+    if len(results) == 0:
+        # 쿼리 결과가 없을 경우
+```
 - 삭제 : 가져온 데이터에 대해서 delete() 메소드 수행
 ```py
 data = Guestbook.objects.get(id=no, password=password)
@@ -204,22 +222,60 @@ def ajaxtest(request):
         ajax_data['data3'] = ajax_data['data3'] + '_success'
     return HttpResponse(json.dumps(ajax_data), content_type="application/json")
 ```
+- python의 dictionary를 JsonResponse를 이용해 json 타입으로 리턴
+```py
+    jsonresult = {
+        'result': 'success',
+        'data': ['hello', 1, 2, True, ('a', 'b', 'c')]
+    }
 
-### Session에 데이터 저장
-- views 에서 저장
+    return JsonResponse(jsonresult)
+```
+- JsonResponse와 model_to_dic를 이용해 객체 자체를 넘기기
+```py
+    try:
+        user = User.objects.get(email=email)
+    except Exception as e:
+        user = None
+    result = {
+        'result': 'success',
+        'data': 'exist' if user is None else 'not exist'
+    }
+    
+    return JsonResponse(result)
+```
+
+### Session 사용
+- views 에서 단일 데이터 저장
 ```py
 request.session['auth_user_email'] = user_data.email
 ```
+- views 에서 객체로 저장 : model_to_dict 사용
+```py
+request.session['authuser'] = model_to_dict(authuser)
+```
 - views 에서 세션 데이터 가져오기
 ```py
-request.session['auth_user_email']
+request.session['authuser']
 ```
 - templates 에서 세션 검사
 ```html
-{% if 'auth_user_email' not in request.session %}
+{% if 'authuser' not in request.session %}
 {% endif %}
 ```
 - templates 에서 세션 데이터 가져오기
 ```html
-{{ request.session.auth_user_email }}
+{{ request.session.authuser.name }}
+```
+- 세션 파기
+  - views 에서 del 을 이용한다
+  - settings.py 에서 SESSION_EXPIRE_AT_BROWSER_CLOSE 를 True 로 설정한다
+```py
+del request.session['authuser']
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_SAVE_EVERY_REQUEST = True # 세션의 일부분만 변경하기 위한 옵션
+```
+- 세션의 일부분만 변경
+```py
+request.session['authuser']['name'] = user.name
 ```
