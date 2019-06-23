@@ -258,3 +258,12 @@
 
 # 0621-Django
 ### Django 템플릿 언어
+- 필터
+- 템플릿에서 math와 관련된 기능들 사용
+- forloop 관련 
+### ORM 심화
+- aggregate
+- F 함수
+- Q 함수
+### Page 처리
+- page_range의 문제점
