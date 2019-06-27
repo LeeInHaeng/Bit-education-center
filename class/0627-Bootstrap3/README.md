@@ -146,7 +146,10 @@ body { font-family: "Helvetica Neue", Helvetica, Arial,'Nanum Gothic', sans-seri
 - 행간은 1.42857143 간격을 가짐
 - 문장을 정렬할 때는 .text-left, .text-center, .text-right 클래스를 사용한다.
   - pull-right 클래스는 float : right 형식으로 들어오기 때문에 인라인 형식으로 작동된다
-  - 인라인 방지를 위해 <div class="clearfix"></div> 를 사용할 수 있다
+  - 인라인 방지를 위한 방법
+```css
+<div class="clearfix"></div>
+```
 - 문장을 다양하게 꾸밀 때는 다음의 클래스를 사용할 수 있다.
   - text-muted, text-primary, text-success, text-info, text-warning, text-danger 클래스 사용이 가능
   - 회색, 파란색, 초록색, 남색, 황토색, 빨간색 
