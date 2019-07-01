@@ -289,3 +289,11 @@
 ### 페이징
 ### 라벨과 배지
 ### 프로그레스 바
+
+# 0701-Linux&Python
+### Linux(CentOS 6)에서 Python 환경설정
+- 필요 라이브러리 다운
+- libressl 설치
+- Python3 설치
+- Python Virtual 환경
+- Pycharm 에서 올린 프로젝트를 리눅스에서 실행
