@@ -297,3 +297,8 @@
 - Python3 설치
 - Python Virtual 환경
 - Pycharm 에서 올린 프로젝트를 리눅스에서 실행
+- 파이썬 프로젝트 압축하기 (패키징)
+
+# 0702-Apache
+### apache vhost 설정
+### apache django 연동하기

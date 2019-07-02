@@ -84,4 +84,11 @@ export PATH=$PATH:/usr/local/cafe24/python3.7.3/bin
   - 즉, github에서 다른 사람이 올려 놓은 파이썬 프로젝트를 가져와서 수행하기 위해서는 가상 환경으로 실행하는 것이 아닌 단순 python 명령어로 실행이 가능하도록 해야 한다.
   - 수동으로 하기 : export PYTHONPATH='/root/dowork/python-projects/프로젝트명/venv/lib/python3.7/site-packages/'
   - 매번 수동으로 프로젝트 라이브러리의 경로를 잡아주는 것은 불가능
-
+  - venv 아닌 환경에서 라이브러리 풀기 : pip3 install -r python_crawling/requirements.txt --target=python_crawling
+  
+### 파이썬 프로젝트 압축하기 (패키징)
+- 파이썬 프로젝트 git에서 clone
+- venv 아닌 환경에서 라이브러리 풀기 : pip3 install -r python_crawling/requirements.txt --target=python_crawling
+- python3 -m zipapp python_crawling
+  - pyz 파일이 생성된다
+- python3 ~~.pyz 로 파이썬 파일 수행
