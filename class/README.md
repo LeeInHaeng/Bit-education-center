@@ -302,3 +302,7 @@
 # 0702-Apache
 ### apache vhost 설정
 ### apache django 연동하기
+
+# 0710-JUnit
+### 필요 라이브러리 다운로드
+### 테스트 클래스 작성
