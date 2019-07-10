@@ -57,6 +57,7 @@ import static org.junit.Assert.*;
 ```java
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class MainControllerTest {
 
 	private MockMvc mockMvc;
